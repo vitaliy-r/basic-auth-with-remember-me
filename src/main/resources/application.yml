@@ -4,3 +4,5 @@ app:
       cookie-name: REMEMBERME
       secret-key: SldUU3VwZXJTZWNyZXRLZXkxMjM0NXF3ZXJ0eXVpb3Bhc2RmZ2hqa2w=
       token-lifetime: 604800 # one week
+server:
+  port: 5000
