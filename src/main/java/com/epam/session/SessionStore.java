@@ -2,18 +2,18 @@ package com.epam.session;
 
 import java.util.HashMap;
 import java.util.Map;
+import lombok.Getter;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 
+@Getter
+@Component
 public class SessionStore {
 
-  private Map<String, Authentication> sessionInfo;
+  private Map<String, Authentication> allActiveSessionsInfo;
 
   public SessionStore() {
-    sessionInfo = new HashMap<>();
-  }
-
-  public Map<String, Authentication> getSessionInfo() {
-    return sessionInfo;
+    allActiveSessionsInfo = new HashMap<>();
   }
 
 }

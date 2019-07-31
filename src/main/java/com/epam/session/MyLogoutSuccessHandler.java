@@ -1,5 +1,7 @@
 package com.epam.session;
 
+import static com.epam.session.MyLoginSuccessHandler.USER_AUTHENTICATION_INFO_ATTRIBUTE_NAME;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +17,7 @@ public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
       HttpServletResponse response, Authentication authentication) {
     HttpSession session = request.getSession(false);
     if (session != null) {
-      session.removeAttribute("info");
+      session.removeAttribute(USER_AUTHENTICATION_INFO_ATTRIBUTE_NAME);
     }
   }
 

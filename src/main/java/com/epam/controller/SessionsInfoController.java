@@ -1,4 +1,4 @@
-package com.epam.config;
+package com.epam.controller;
 
 import static java.util.stream.Collectors.joining;
 
@@ -6,7 +6,7 @@ import com.epam.session.SessionStore;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistry;
@@ -16,12 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/session")
+@RequiredArgsConstructor
 public class SessionsInfoController {
 
-  @Autowired
-  private SessionRegistry sessionRegistry;
-  @Autowired
-  private SessionStore sessionStore;
+  private final SessionRegistry sessionRegistry;
+  private final SessionStore sessionStore;
 
   @GetMapping
   public List<String> getAllSessionsFromSessionRegistry() {
@@ -57,7 +56,7 @@ public class SessionsInfoController {
 
   @GetMapping("/customstore/active")
   public Map<String, Authentication> getAllActiveSessionsFromCustomSessionStore() {
-    return sessionStore.getSessionInfo();
+    return sessionStore.getAllActiveSessionsInfo();
   }
 
   private String getSessionInfoAsString(SessionInformation sessionInfo) {

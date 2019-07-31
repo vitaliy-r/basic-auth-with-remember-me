@@ -1,7 +1,6 @@
 package com.epam.config;
 
-import com.epam.session.SessionStore;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +16,7 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private static final String SESSION_PARAMETER_NAME = "JSESSIONID";
@@ -31,10 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Value("${app.security.remember-me.token-lifetime}")
   private Integer tokenLifetime;
 
-  @Autowired
-  private AuthenticationSuccessHandler loginSuccessHandler;
-  @Autowired
-  private LogoutSuccessHandler logoutSuccessHandler;
+  private final AuthenticationSuccessHandler loginSuccessHandler;
+  private final LogoutSuccessHandler logoutSuccessHandler;
 
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -83,11 +81,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Bean
   public HttpSessionEventPublisher httpSessionEventPublisher() {
     return new HttpSessionEventPublisher();
-  }
-
-  @Bean
-  public SessionStore sessionStore(){
-    return new SessionStore();
   }
 
 }
