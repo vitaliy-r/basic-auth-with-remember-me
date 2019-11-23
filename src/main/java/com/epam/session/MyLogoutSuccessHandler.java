@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
 
   @Override
-  public void onLogoutSuccess(HttpServletRequest request,
-      HttpServletResponse response, Authentication authentication) {
+  public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
+      Authentication authentication) {
     HttpSession session = request.getSession(false);
     if (session != null) {
       session.removeAttribute(USER_AUTHENTICATION_INFO_ATTRIBUTE_NAME);

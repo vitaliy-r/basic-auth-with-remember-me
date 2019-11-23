@@ -1,4 +1,4 @@
-package com.epam.session;
+package com.epam.session.model;
 
 import java.util.HashMap;
 import java.util.Map;

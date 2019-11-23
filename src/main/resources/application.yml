@@ -6,3 +6,11 @@ app:
       token-lifetime: 604800 # one week
 server:
   port: 5000
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore.p12
+    key-store-password: admin123
+    key-alias: tomcat
+    enabled-protocols: TLSv1.1,TLSv1.2
+security:
+  require-ssl: true

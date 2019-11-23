@@ -1,4 +1,4 @@
-package com.epam.session;
+package com.epam.session.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

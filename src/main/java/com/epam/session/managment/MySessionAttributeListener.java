@@ -1,5 +1,7 @@
-package com.epam.session;
+package com.epam.session.managment;
 
+import com.epam.session.model.SessionInfo;
+import com.epam.session.model.SessionStore;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
